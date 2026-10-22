@@ -68,3 +68,55 @@ body{background:linear-gradient(135deg,#eef4f5 0%,#f7faf9 48%,#edf5f2 100%);colo
 .beginner-card{border-color:#cfe8da}.beginner-intro h2{color:var(--deep)}
 @media(max-width:950px){.beginner-card{grid-template-columns:1fr}.beginner-steps{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:620px){.beginner-steps{grid-template-columns:1fr}}
+
+/* Keep the navigation available while giving the content the full viewport. */
+@media(max-width:950px){
+  .app-shell{display:block}
+  .sidebar{position:relative;inset:auto;width:100%;height:auto;padding:14px 20px 10px;display:block}
+  .brand{padding:0 0 14px}
+  .sidebar nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+  .sidebar nav::-webkit-scrollbar{display:none}
+  .nav-item{flex:0 0 auto;width:max-content;min-width:max-content;margin:0;padding:10px 12px;white-space:nowrap;font-size:12px}
+  .nav-item span{flex:0 0 18px}
+  .sidebar-bottom{display:none}
+  .main-content{width:100%;max-width:none;margin:0;padding:24px 4% 28px}
+  .overview-grid,.split-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:620px){
+  body{font-size:13px}
+  .sidebar{padding:12px 14px 8px}
+  .brand{padding-bottom:10px}
+  .brand strong{font-size:18px}
+  .topbar{padding:20px 18px;border-radius:14px}
+  .topbar h1{font-size:25px;line-height:1.15}
+  .subtitle{line-height:1.45}
+  .top-actions{justify-content:space-between;gap:10px}
+  .export-button{flex:1}
+  .toolbar{grid-template-columns:1fr;padding:10px}
+  .date-control,.select-control,.csv-control,.refresh-button{grid-column:auto;width:100%}
+  .select-control{justify-content:space-between}
+  .select-control select{min-width:0;max-width:65%;text-align:right}
+  .csv-control{display:flex}
+  .csv-control input{flex:1;min-width:0;max-width:none}
+  .kpi-card{padding:18px}
+  .kpi-card .change{float:none;display:block;padding-top:6px}
+  .card{padding:18px}
+  .card-heading{gap:12px}
+  .card-heading h2{font-size:17px;line-height:1.2}
+  .card-heading>.outline-button{flex:0 0 auto}
+  .chart-meta{margin-top:18px}
+  .line-chart{height:145px}
+  .bar-chart{height:185px;padding-left:0;padding-right:0;gap:8px}
+  .bar-wrap{width:24px}
+  .donut-row{justify-content:center;padding:20px 0}
+  .patterns-card .card-heading{display:block}
+  .patterns-card .outline-button{margin-top:14px}
+  .pattern-row{grid-template-columns:1fr 1fr}
+  .pattern-row .pattern-name{grid-column:1/-1}
+  .pattern-row .metric:last-child{grid-column:auto}
+  .route-row{grid-template-columns:minmax(0,1fr) auto auto;gap:8px}
+  .route-row strong{overflow-wrap:anywhere}
+  .methodology-grid{gap:8px}
+  footer{line-height:1.6;text-align:center}
+}
