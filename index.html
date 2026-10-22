@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Supply-chain logistics frequent-pattern mining dashboard">
+  <title>Routewise | Supply Chain Intelligence</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">R</div>
+        <div><strong>routewise</strong><span>logistics intelligence</span></div>
+      </div>
+      <nav>
+        <a class="nav-item active" href="#overview"><span>◈</span>Overview</a>
+        <a class="nav-item" href="#patterns"><span>⌘</span>Delay clues</a>
+        <a class="nav-item" href="#routes"><span>⌁</span>Routes</a>
+        <a class="nav-item" href="#help"><span>?</span>How to use</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="data-status"><i></i><span id="dataSource">Using sample data</span><small>Upload your CSV when you are ready</small></div>
+        <div class="profile"><div class="avatar">S</div><div><strong>Siddu</strong><small>Logistics manager</small></div><span>•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Operations command center</p>
+          <h1>Good morning, Siddu <span>✦</span></h1>
+          <p class="subtitle">Here’s what’s happening across your delivery network.</p>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" aria-label="Notifications">♧<b></b></button>
+          <button class="export-button" id="exportBtn">⇩ Export report</button>
+        </div>
+      </header>
+
+      <section class="toolbar">
+        <div class="date-control" title="The dashboard starts with the included sample shipments."><span>▣</span><strong>Sample shipments</strong></div>
+        <label class="select-control">Warehouse <select id="warehouseFilter"><option value="all">All warehouses</option></select></label>
+        <label class="select-control">Status <select id="statusFilter"><option value="all">All shipments</option><option value="Delayed">Delayed</option><option value="On-time">On-time</option></select></label>
+        <label class="select-control csv-control"><span>Upload CSV</span><input id="csvFile" type="file" accept=".csv,text/csv"></label>
+        <button type="button" class="refresh-button" id="resetBtn">↻ Reset filters</button>
+      </section>
+
+      <section class="card beginner-card" id="help">
+        <div class="beginner-intro">
+          <p class="section-label">Start here</p>
+          <h2>See your delivery problems in 3 simple steps</h2>
+          <p class="muted">You can use the sample data now, or upload your own shipment CSV later.</p>
+        </div>
+        <div class="beginner-steps">
+          <div><strong>1. Check the cards</strong><span>See total shipments, on-time delivery, and average delay.</span></div>
+          <div><strong>2. Find the problem</strong><span>Use the filters, charts, and delay clues to find trouble spots.</span></div>
+          <div><strong>3. Take action</strong><span>Review the routes and recommendations at the bottom.</span></div>
+        </div>
+      </section>
+
+      <section class="kpi-grid" id="kpis"></section>
+
+      <section class="dashboard-grid overview-grid" id="overview">
+        <article class="card trend-card">
+          <div class="card-heading"><div><p class="section-label">Delivery health</p><h2>On-time delivery rate</h2></div><span class="trend-positive" id="trendChange"></span></div>
+          <div class="chart-meta"><strong id="onTimeValue">0.0%</strong><span>Target <b>85%</b></span></div>
+          <div class="line-chart" id="trendChart" aria-label="On-time delivery trend"></div>
+          <div class="chart-axis" id="trendAxis"></div>
+        </article>
+        <article class="card risk-card">
+          <div class="card-heading"><div><p class="section-label">Needs attention</p><h2>High-risk shipments</h2></div><span class="alert-icon">!</span></div>
+          <div class="risk-number"><strong id="highRiskValue">0</strong><span>shipments</span></div>
+          <div class="risk-bar"><i id="riskBar"></i></div>
+          <div class="risk-footer"><span><b id="riskPercent">0.0%</b> of total shipments</span><a href="#patterns">View risks →</a></div>
+        </article>
+      </section>
+
+      <section class="dashboard-grid split-grid">
+        <article class="card">
+          <div class="card-heading"><div><p class="section-label">Network overview</p><h2>Delay rate by warehouse</h2></div><button class="more-button">•••</button></div>
+          <div class="bar-chart" id="warehouseChart"></div>
+        </article>
+        <article class="card">
+          <div class="card-heading"><div><p class="section-label">Network snapshot</p><h2>Shipment status</h2></div><span class="live-pill">Calculated</span></div>
+          <div class="donut-row"><div class="donut" id="donut"><span><strong id="donutTotal">0</strong><small>shipments</small></span></div><div class="legend" id="statusLegend"></div></div>
+          <div class="status-note"><span class="pulse-dot"></span><span><strong>On track</strong><br><small>Most deliveries are moving as planned</small></span><b>→</b></div>
+        </article>
+      </section>
+
+      <section class="card patterns-card" id="patterns">
+        <div class="card-heading"><div><p class="section-label">Delay clues</p><h2>What is linked to delays?</h2><p class="muted">These combinations appear often in delayed shipments. Higher confidence means a stronger clue.</p></div><button class="outline-button" id="allPatternsBtn">View delay clues →</button></div>
+        <div class="pattern-list" id="patternList"></div>
+      </section>
+
+      <section class="dashboard-grid split-grid lower-grid">
+        <article class="card" id="routes">
+          <div class="card-heading"><div><p class="section-label">Route performance</p><h2>Routes needing attention</h2></div><a class="text-link" href="#routes">See all →</a></div>
+          <div class="route-table" id="routeTable"></div>
+        </article>
+        <article class="card" id="warehouses">
+          <div class="card-heading"><div><p class="section-label">Manager playbook</p><h2>Recommended actions</h2></div><span class="sparkle">✦</span></div>
+          <div class="recommendations" id="recommendations"></div>
+        </article>
+      </section>
+      <section class="card methodology-card" id="methodology">
+        <div class="card-heading"><div><p class="section-label">For curious users</p><h2>How the analysis works</h2></div></div>
+        <p class="muted">The dashboard compares shipping details with delivery results. You do not need to understand the technical method to use the charts above.</p>
+        <div class="methodology-grid">
+          <div><strong>1. Ingest</strong><span>DataCo CSV is parsed in a Web Worker so the UI remains responsive.</span></div>
+          <div><strong>2. Mine</strong><span>Python <code>mlxtend.fpgrowth</code> finds itemsets at minimum support 0.3%.</span></div>
+          <div><strong>3. Filter</strong><span><code>association_rules</code> keeps delayed-outcome rules at minimum confidence 60%.</span></div>
+          <div><strong>4. Explain</strong><span>Support shows prevalence; confidence shows delay likelihood; lift compares with baseline delay rate.</span></div>
+        </div>
+      </section>
+      <footer>Routewise Analytics <span>•</span> Pattern engine: Python mlxtend FP-Growth <span>•</span> Rules exported from the selected dataset</footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

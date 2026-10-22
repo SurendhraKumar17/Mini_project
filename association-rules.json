@@ -1,0 +1,160 @@
+{
+  "generatedFrom": "shipments.csv",
+  "transactions": 180519,
+  "minSupport": 0.003,
+  "minConfidence": 0.6,
+  "rules": [
+    {
+      "tags": [
+        "Order month=2016-10",
+        "Shipping mode=First Class"
+      ],
+      "support": 0.004680947711875204,
+      "confidence": 0.9859976662777131,
+      "lift": 1.7983098368185184,
+      "count": 845
+    },
+    {
+      "tags": [
+        "Order month=2015-07",
+        "Shipping mode=First Class"
+      ],
+      "support": 0.0041713060675053594,
+      "confidence": 0.9804687499999999,
+      "lift": 1.7882259341185323,
+      "count": 753
+    },
+    {
+      "tags": [
+        "Order month=2015-08",
+        "Shipping mode=First Class"
+      ],
+      "support": 0.004824976872240595,
+      "confidence": 0.9797525309336331,
+      "lift": 1.7869196594320753,
+      "count": 871
+    },
+    {
+      "tags": [
+        "Order month=2015-09",
+        "Shipping mode=First Class"
+      ],
+      "support": 0.0043264143940527034,
+      "confidence": 0.9786967418546366,
+      "lift": 1.7849940606692174,
+      "count": 781
+    },
+    {
+      "tags": [
+        "Order month=2015-03",
+        "Shipping mode=First Class"
+      ],
+      "support": 0.004658789379511298,
+      "confidence": 0.9767711962833914,
+      "lift": 1.7814821582982059,
+      "count": 841
+    },
+    {
+      "tags": [
+        "Order month=2015-07",
+        "Shipping mode=Second Class"
+      ],
+      "support": 0.0046144727147834855,
+      "confidence": 0.8296812749003984,
+      "lift": 1.5132125045590896,
+      "count": 833
+    },
+    {
+      "tags": [
+        "Order month=2017-08",
+        "Region=Western Europe",
+        "Shipping mode=Second Class"
+      ],
+      "support": 0.0030800081985829747,
+      "confidence": 0.8188512518409425,
+      "lift": 1.4934601890446781,
+      "count": 556
+    },
+    {
+      "tags": [
+        "Region=South of  USA ",
+        "Shipping mode=Second Class"
+      ],
+      "support": 0.0037281394202272338,
+      "confidence": 0.8118214716525936,
+      "lift": 1.4806389387560193,
+      "count": 673
+    },
+    {
+      "tags": [
+        "Order month=2016-05",
+        "Shipping mode=Second Class"
+      ],
+      "support": 0.004764041458239853,
+      "confidence": 0.7977736549165122,
+      "lift": 1.4550178567937386,
+      "count": 860
+    },
+    {
+      "tags": [
+        "Order month=2016-11",
+        "Shipping mode=Second Class"
+      ],
+      "support": 0.0045590768838737195,
+      "confidence": 0.7967086156824782,
+      "lift": 1.4530753871544426,
+      "count": 823
+    },
+    {
+      "tags": [
+        "Order month=2017-08",
+        "Shipping mode=Second Class"
+      ],
+      "support": 0.004902531035514267,
+      "confidence": 0.7958633093525179,
+      "lift": 1.4515336769250147,
+      "count": 885
+    },
+    {
+      "tags": [
+        "Region=Eastern Asia",
+        "Shipping mode=Second Class"
+      ],
+      "support": 0.006182174729529855,
+      "confidence": 0.7937411095305832,
+      "lift": 1.4476631070991375,
+      "count": 1116
+    },
+    {
+      "tags": [
+        "Order month=2015-12",
+        "Shipping mode=Second Class"
+      ],
+      "support": 0.004564616466964697,
+      "confidence": 0.7915465898174833,
+      "lift": 1.443660636786953,
+      "count": 824
+    },
+    {
+      "tags": [
+        "Customer segment=Home Office",
+        "Order month=2016-05"
+      ],
+      "support": 0.0030412311169461387,
+      "confidence": 0.6127232142857144,
+      "lift": 1.1175139872863682,
+      "count": 549
+    },
+    {
+      "tags": [
+        "Customer segment=Corporate",
+        "Order month=2017-08",
+        "Region=Western Europe"
+      ],
+      "support": 0.003179720694220553,
+      "confidence": 0.6042105263157894,
+      "lift": 1.101988138658476,
+      "count": 574
+    }
+  ]
+}
